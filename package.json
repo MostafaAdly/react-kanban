@@ -1,5 +1,5 @@
 {
-  "name": "@caldwell619/react-kanban",
+  "name": "@mostafaadly/react-kanban",
   "version": "0.0.12",
   "description": "(fork of) Yet another Kanban/Trello board lib for React",
   "scripts": {

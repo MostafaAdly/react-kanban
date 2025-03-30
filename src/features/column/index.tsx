@@ -44,6 +44,7 @@ export const Column = function <TCard extends CardType>({
           >
             <div {...columnProvided.dragHandleProps}>{renderColumnHeader(column)}</div>
             {allowAddCard && <CardAdder<TCard> column={column} onConfirm={onCardNew} />}
+            asdasd
             <DroppableColumn droppableId={String(column.id)}>
               {column.cards.length ? (
                 column.cards.map((card, index) => (
