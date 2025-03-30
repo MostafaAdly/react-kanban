@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import { forwardRef, ComponentProps } from 'react'
 import { Draggable } from '@hello-pangea/dnd'
 
 import { Card } from '../card'
@@ -7,9 +7,20 @@ import { CardAdder } from '../card-adder'
 import { pickPropOut } from '@services/utils'
 import { Column as ColumnType, Card as CardType } from '@/types'
 
-const ColumnEmptyPlaceholder = forwardRef<HTMLDivElement>((props, ref) => (
-  <div ref={ref} style={{ minHeight: 'inherit', height: 'inherit' }} {...props} />
-))
+const ColumnEmptyPlaceholder = forwardRef<HTMLDivElement, ComponentProps<'div'>>(
+  ({ className, style, ...props }, ref) => (
+    <div
+      ref={ref}
+      style={{
+        minHeight: 'inherit',
+        height: '500px',
+        overflowY: 'auto',
+        ...style,
+      }}
+      {...props}
+    />
+  )
+)
 
 const DroppableColumn = withDroppable(ColumnEmptyPlaceholder)
 
@@ -44,7 +55,6 @@ export const Column = function <TCard extends CardType>({
           >
             <div {...columnProvided.dragHandleProps}>{renderColumnHeader(column)}</div>
             {allowAddCard && <CardAdder<TCard> column={column} onConfirm={onCardNew} />}
-            asdasd
             <DroppableColumn droppableId={String(column.id)}>
               {column.cards.length ? (
                 column.cards.map((card, index) => (
