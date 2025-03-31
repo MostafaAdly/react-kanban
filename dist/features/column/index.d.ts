@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { Column as ColumnType, Card as CardType } from '../../types';
 export declare const Column: <TCard extends CardType>({ children: column, index: columnIndex, renderCard, renderColumnHeader, disableColumnDrag, disableCardDrag, onCardNew, allowAddCard, }: Props<TCard>) => import("react/jsx-runtime").JSX.Element;
 export declare type RenderColumnHeader<TCard extends CardType> = (column: ColumnType<TCard>) => JSX.Element;

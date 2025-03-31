@@ -7,7 +7,7 @@ import { CardAdder } from '../card-adder';
 import { pickPropOut } from '../../services/utils';
 const ColumnEmptyPlaceholder = forwardRef(({ className, style, ...props }, ref) => (_jsx("div", Object.assign({ ref: ref, style: {
         minHeight: 'inherit',
-        height: '500px',
+        height: '100%',
         overflowY: 'auto',
         ...style,
     } }, props), void 0)));
@@ -20,6 +20,7 @@ export const Column = function ({ children: column, index: columnIndex, renderCa
                     minHeight: '28px',
                     display: 'inline-block',
                     verticalAlign: 'top',
+                    paddingBottom: '70px',
                     ...columnProvided.draggableProps.style,
                 }, className: 'react-kanban-column', "data-testid": `column-${column.id}` }, { children: [_jsx("div", Object.assign({}, columnProvided.dragHandleProps, { children: renderColumnHeader(column) }), void 0), allowAddCard && _jsx(CardAdder, { column: column, onConfirm: onCardNew }, void 0), _jsx(DroppableColumn, Object.assign({ droppableId: String(column.id) }, { children: column.cards.length ? (column.cards.map((card, index) => (_jsx(Card, Object.assign({ index: index, renderCard: (dragging) => renderCard(column, card, dragging), disableCardDrag: disableCardDrag }, { children: card }), card.id)))) : (_jsx("div", { className: 'react-kanban-card-skeleton' }, void 0)) }), void 0)] }), void 0));
         } }), void 0));

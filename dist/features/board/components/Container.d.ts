@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { Coordinates } from '../../../services/board';
 import { RenderCard } from '../../column';
 import { Card, Column as ColumnType, KanbanBoard } from '../../../types';
