@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import { forwardRef, JSX } from 'react'
 import { DragDropContext, DragDropContextProps } from '@hello-pangea/dnd'
 
 import { Column } from '@/features/column'
@@ -43,14 +43,17 @@ export const BoardContainer = function <TCard extends Card>({
 
     isAColumnMove(event.type)
       ? isMovingAColumnToAnotherPosition(coordinates) &&
-        onColumnDragEnd({ ...coordinates, subject: board.columns[coordinates.source.fromPosition] })
+      onColumnDragEnd({ ...coordinates, subject: board.columns[coordinates.source.fromPosition] })
       : isMovingACardToAnotherPosition(coordinates) &&
-        onCardDragEnd({ ...coordinates, subject: getCard<TCard>(board, coordinates.source) })
+      onCardDragEnd({ ...coordinates, subject: getCard<TCard>(board, coordinates.source) })
   }
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
-      <div style={{ overflowY: 'hidden', display: 'flex', alignItems: 'flex-start' }} className='react-kanban-board'>
+      <div
+        style={{ overflowY: 'hidden', display: 'flex', alignItems: 'stretch', height: '100%' }}
+        className='react-kanban-board'
+      >
         <DroppableBoard droppableId='board-droppable' direction='horizontal' type='BOARD'>
           {board.columns.map((column, index) => (
             <Column<TCard>

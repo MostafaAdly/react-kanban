@@ -1,4 +1,4 @@
-import { forwardRef, ComponentProps } from 'react'
+import { forwardRef, ComponentProps, JSX } from 'react'
 import { Draggable } from '@hello-pangea/dnd'
 
 import { Card } from '../card'
@@ -13,7 +13,7 @@ const ColumnEmptyPlaceholder = forwardRef<HTMLDivElement, ComponentProps<'div'>>
       ref={ref}
       style={{
         minHeight: 'inherit',
-        height: '500px',
+        height: '100%',
         overflowY: 'auto',
         ...style,
       }}
@@ -48,6 +48,7 @@ export const Column = function <TCard extends CardType>({
               minHeight: '28px',
               display: 'inline-block',
               verticalAlign: 'top',
+              paddingBottom: '70px',
               ...columnProvided.draggableProps.style,
             }}
             className='react-kanban-column'
